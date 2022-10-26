@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "849895845395",
+    "project_id": "midterm-165b5",
+    "storage_bucket": "midterm-165b5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:849895845395:android:810b55c41610a3ecc059e6",
+        "android_client_info": {
+          "package_name": "com.neil.publisher"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "849895845395-knp6j5b5c13citv263937j3g2h93qb57.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrXo0tScTVuqUHW-azoF3anjD6m0L5J5c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "849895845395-knp6j5b5c13citv263937j3g2h93qb57.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -10,11 +10,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val publishButton = findViewById<FloatingActionButton>(R.id.floatingActionButton)
-        val navController = findNavController(R.id.myNavHostFragment)
-
-        publishButton.setOnClickListener {
-           navController.navigate(R.id.publishFragment)
-        }
     }
 }
