@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.neil.publisher.data.Article
 import com.neil.publisher.databinding.ItemHomeArticleBinding
 import java.sql.Date
+import java.text.SimpleDateFormat
 
 class HomeArticleAdapter(): ListAdapter<Article, HomeArticleAdapter.ViewHolder>(DiffCallBack()) {
 
@@ -19,8 +20,18 @@ class HomeArticleAdapter(): ListAdapter<Article, HomeArticleAdapter.ViewHolder>(
             // -----------------------------------bind method-----------------------------------
             binding.articleTitle.text = item.title
             binding.authorName.text = item.author?.name ?: null
-            binding.articleCreatedTime.text = item.createdTime?.let { Date(it).toString() }
+            val sdf = SimpleDateFormat("yyyy.MM.dd hh:mm")
+            val time = sdf.format(Date(item.createdTime!!))
+            binding.articleCreatedTime.text = time
             binding.category.text = item.category
+            if (item.category == "Beauty") {
+                binding.category.setTextColor(Color.parseColor("#3F51B5"))
+            } else if (item.category == "Gossiping") {
+                binding.category.setTextColor(Color.parseColor("#FF4CAF50"))
+            } else {
+                binding.category.setTextColor(Color.parseColor("#FF6200EE"))
+            }
+
             binding.articleContent.text = item.content
         }
     }
