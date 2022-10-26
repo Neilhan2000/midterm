@@ -32,6 +32,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginEnd="4dp"
             android:ems="10"
+            android:gravity="left"
             android:hint="input title"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
