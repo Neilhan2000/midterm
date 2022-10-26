@@ -1,10 +1,17 @@
 package com.neil.publisher
 
+import android.hardware.usb.UsbRequest
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.google.firebase.firestore.FirebaseFirestore
+import com.neil.publisher.data.Article
+import com.neil.publisher.data.Author
+import com.neil.publisher.databinding.FragmentPublishBinding
+import java.util.*
 
 
 class PublishFragment : Fragment() {
@@ -14,7 +21,37 @@ class PublishFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_publish, container, false)
+        val binding = FragmentPublishBinding.inflate(inflater, container, false)
+
+        binding.publishButton.setOnClickListener {
+            if (UserManager.userToken != null) {
+
+            } else {
+                Toast.makeText(this.context, "Require login to publish", Toast.LENGTH_SHORT).show()
+            }
+        }
+        val article = Article(Author(UserManager.user.email, UserManager.user.id, UserManager.user.name))
+
+        return binding.root
+    }
+
+    fun addData(article: Article) {
+        val articles = FirebaseFirestore.getInstance()
+            .collection("articles")
+        val document = articles.document()
+        val data = hashMapOf(
+            "author" to hashMapOf(
+                "email" to "wayne@school.appworks.tw",
+                "id" to "waynechen323",
+                "name" to "AKA小安老師"
+            ),
+            "title" to "IU「亂穿」竟美出新境界！笑稱自己品味奇怪　網笑：靠顏值撐住女神氣場",
+            "content" to "南韓歌手IU（李知恩）無論在歌唱方面或是近期的戲劇作品都有亮眼的成績，但俗話說人無完美、美玉微瑕，曾再跟工作人員的互動影片中坦言自己 品味很奇怪，近日在IG上分享了宛如「媽媽們青春時代的玉女歌手」超復古穿搭造型，卻意外美出新境界。",
+            "createdTime" to Calendar.getInstance()
+                .timeInMillis,
+            "id" to document.id,
+            "category" to "Beauty"
+        )
+        document.set(data)
     }
 }
